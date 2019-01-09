@@ -79,7 +79,7 @@
   <div class="container">
     <h1>TodoList</h1>
 
-    <form>
+    <form onsubmit="submitTodo(); return false">
       <input type="text" id="new-todo" placeholder="What needs to be done?">
     </form>
 
@@ -95,8 +95,8 @@
       </li>
     </ul>
     <div class="footer">
-      Todo: <span id="todo-count">1</span> •
-      Done: <span id="completed-count">0</span> •
+      Todo: <span id="todo-count">1</span> 
+      Done: <span id="completed-count">0</span> 
       Total: <span id="total-count">1</span>
     </div>
   </div>
@@ -142,6 +142,17 @@
 
 }
 
+function submitTodo() {
+  var inputField = document.getElementById("new-todo");
+  var newTodoTitle = inputField.value;
+  createTodo(newTodoTitle);
+
+  // reset the value of the inputField to make it empty and
+  // ready to create new todos
+  inputField.value = null;
+
+  updateCounters();
+}
 </script>
 
 </body>
